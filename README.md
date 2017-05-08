@@ -5,7 +5,10 @@ the C++ language and the OpenCV library. As well the monogenic signal, several
 related quantities that can be derived from the monogenic signal, such as Feature
 Symmetry and Asymmetry, are also implemented.
 
-The monogenic signal is an alternative way of representing an image, which has a number of advantages for further processing. For an introduction to the monogenic signal and derived features with references to the relevant scientific literature, please see [this document](https://chrispbridge.files.wordpress.com/2016/05/monogenic2.pdf) (PDF).
+The monogenic signal is an alternative way of representing an image, which has a
+number of advantages for further processing. For an introduction to the monogenic
+signal and derived features with references to the relevant scientific literature,
+please see [this document](https://chrispbridge.files.wordpress.com/2016/05/monogenic2.pdf) (PDF).
 
 ### Capabilities
 
@@ -32,7 +35,7 @@ versions should be compatible. If you are using GNU/Linux, there will probably
 be a suitable packaged version in your distribution's repository.
 * (Optional) If you use a C++ compiler supporting the
 [OpenMP](http://openmp.org/wp/) standard (includes most major compilers on major
-platforms including MSVC, g++ and clang)there may be a small speed boost due to
+platforms including MSVC, g++ and clang) there may be a small speed boost due to
 parallelisation.
 
 ### Instructions for Use
