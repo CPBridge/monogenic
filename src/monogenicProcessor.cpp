@@ -330,7 +330,7 @@ void monogenicProcessor::getOrientedAsymmetry(Mat &fa, Mat &lo)
 void monogenicProcessor::getLocalPhase(Mat &lp)
 {
 	if(!lp_valid) findLP();
-	lp = lp;
+	lp = this->lp;
 }
 
 void monogenicProcessor::getLocalPhaseVector(Mat &mag, Mat &lo)
