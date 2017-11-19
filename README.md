@@ -8,7 +8,7 @@ Symmetry and Asymmetry, are also implemented.
 The monogenic signal is an alternative way of representing an image, which has a
 number of advantages for further processing. For an introduction to the monogenic
 signal and derived features with references to the relevant scientific literature,
-please see [this document](https://chrispbridge.files.wordpress.com/2016/05/monogenic2.pdf) (PDF).
+please see [this document](https://chrisbridge.science/docs/intro_to_monogenic_signal.pdf) (PDF).
 
 ### Capabilities
 
@@ -63,5 +63,5 @@ the monogenic signal and feature symmetry and asymmetry images, and display then
 
 ### Author
 
-Written by [Christopher Bridge](https://chrispbridge.wordpress.com/) at the
+Written by [Christopher Bridge](https://chrisbridge.science/) at the
 University of Oxford's Institute of Biomedical Engineering.
