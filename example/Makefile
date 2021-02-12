@@ -12,7 +12,7 @@ CPPFLAGS:=-c -Wall -Wextra -std=c++11 -fopenmp -O2 $(INCLUDE_DIR)
 
 # Linker Flags (OpenMP, OpenCV, Boost Program Options)
 LDFLAGS1:=-fopenmp
-LDFLAGS2:=`pkg-config --libs opencv`
+LDFLAGS2:=`pkg-config --libs opencv4`
 
 # Name of the executable
 EXEC:=monogenicTest

@@ -40,9 +40,9 @@ int main( int argc, char** argv )
 	}
 
 	// Get proportions of the video frames and their number
-	const int n_frames = vid_obj.get(CV_CAP_PROP_FRAME_COUNT);
-	const int xsize = vid_obj.get(CV_CAP_PROP_FRAME_WIDTH);
-	const int ysize = vid_obj.get(CV_CAP_PROP_FRAME_HEIGHT);
+	const int n_frames = vid_obj.get(cv::CAP_PROP_FRAME_COUNT);
+	const int xsize = vid_obj.get(cv::CAP_PROP_FRAME_WIDTH);
+	const int ysize = vid_obj.get(cv::CAP_PROP_FRAME_HEIGHT);
 
 	// Create three display windows, one for the even part, and one for the each
 	// of the off parts
@@ -67,7 +67,7 @@ int main( int argc, char** argv )
 	{
 		// Grab next frame and convert to greyscale
 		vid_obj >> I;
-		cvtColor(I,I,CV_BGR2GRAY);
+		cvtColor(I,I,cv::COLOR_BGR2GRAY);
 
 		// This line performs the calculation on the image I to find the monogenic
 		// signal representation and must be performed before trying to access
@@ -86,17 +86,17 @@ int main( int argc, char** argv )
 		mgFilts.getFeatureAsymmetry(fa);
 
 		// Display even and odd components
-		normalize(even,disp1,0,1, CV_MINMAX);
+		normalize(even,disp1,0,1, cv::NORM_MINMAX);
 		imshow("Even", disp1);
-		normalize(oddy,disp2,0,1, CV_MINMAX);
+		normalize(oddy,disp2,0,1, cv::NORM_MINMAX);
 		imshow("Odd Y", disp2);
-		normalize(oddx,disp3,0,1, CV_MINMAX);
+		normalize(oddx,disp3,0,1, cv::NORM_MINMAX);
 		imshow("Odd X", disp3);
 
 		// Display feature symmetry and asymmetry
-		normalize(fs,disp4,0,1, CV_MINMAX);
+		normalize(fs,disp4,0,1, cv::NORM_MINMAX);
 		imshow("Feature Symmetry", disp4);
-		normalize(fa,disp5,0,1, CV_MINMAX);
+		normalize(fa,disp5,0,1, cv::NORM_MINMAX);
 		imshow("Feature Asymmetry", disp5);
 
 		// Pause the loop for short while

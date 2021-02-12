@@ -112,7 +112,7 @@ void monogenicProcessor::findMonogenicSignal(const Mat &I)
 	// Make sure the input image is greyscale
 	if(I.channels() == 3)
 	{
-		cvtColor(I,padded,CV_BGR2GRAY);
+		cvtColor(I,padded,cv::COLOR_BGR2GRAY);
 		copyMakeBorder(padded, padded, 0, pad_ysize - ysize, 0, pad_xsize - xsize, BORDER_CONSTANT, Scalar::all(0));  //expand input image to optimal size
 	}
 	else
