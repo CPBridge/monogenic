@@ -30,7 +30,7 @@ quantities from still images.
 ### Dependencies
 
 * A C++ compiler supporting the C++11 standard (requires a relatively modern version of your compiler).
-* The [OpenCV](http://opencv.org) library. Tested on version 3.1.0 but most fairly recent
+* The [OpenCV](http://opencv.org) library. Tested on version 4.2 but most fairly recent
 versions should be compatible. If you are using GNU/Linux, there will probably
 be a suitable packaged version in your distribution's repository.
 * (Optional) If you use a C++ compiler supporting the
