@@ -1,4 +1,4 @@
-# Monogenic Signal (OpenCV Implementation)
+# Monogenic Signal (OpenCV Implementation with Python Bindings)
 
 This is a basic implementation of the monogenic signal for 2D images using
 the C++ language and the OpenCV library. As well the monogenic signal, several
@@ -51,7 +51,7 @@ parallelisation.
 
 #### Initialize Submodules
 
-**Important**: Before building, you must initialize the git submodules:
+**Important**: If you wish to build the Python bindings, you must initialize the git submodules before building:
 
 ```bash
 git submodule update --init --recursive
@@ -91,7 +91,7 @@ directory. The comments in this file should demonstrate the basic usage.
 
 #### Python Usage
 
-After building the project, the Python module `pymonogenic` will be available. Check that using `make install` it is successfully the library is in interpreter's site-packages folder or use the enviromental variable `PYTHONPATH` to add the path to the build folder that contains the compiled pymonogenic library.
+After building the project, the Python module `pymonogenic` will be available. It may be installed in the interpreter's site-packages folder using `make install`. Alternatively add to the `PYTHONPATH` environment variable the path to the build folder that contains the compiled pymonogenic library (`build/python` in the example above), e.g. with `export PYTHONPATH=build/python:${PYTHONPATH}`.
 
  You can use it like this:
 
