@@ -73,7 +73,8 @@ make -j$(nproc)
 This will build:
 - The monogenic C++ library
 - The C++ example executable (`monogenic_image_test`)
-If python bindings are enabled:
+
+and, if python bindings are enabled:
 - The Python module (`pymonogenic`)
 
 ### Instructions for Use
