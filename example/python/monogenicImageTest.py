@@ -1,8 +1,6 @@
 import cv2
-import numpy as np
 import sys
 import time
-import math # For rounding
 # Import your Pybind11 module
 # Make sure this module (_monogenic_python.so or _monogenic_python.pyd)
 # is in your Python path or the same directory as this script.
@@ -102,7 +100,7 @@ def main():
         # Display something initially to ensure the window is created before moving
         cv2.imshow(name, initial_display_img)
         cv2.moveWindow(name, start_x + i * x_offset, start_y)
-        windows[name] = True # Keep track of created windows
+        windows[name] = True
 
     # The first step to using the monogenicProcessor is to initialise
     # a monogenic processor object.
@@ -121,7 +119,6 @@ def main():
         sys.exit(1)
 
 
-    # --- Start Profiling ---
     start_time = time.time()
 
     # Calculate the monogenic signal for the input image
@@ -139,7 +136,7 @@ def main():
         print(f"Monogenic signal and feature calculation time: {elapsed_time:.4f} seconds")
 
         even_np = mgFilts.getEvenFilt()
-        oddy_np, oddx_np = mgFilts.getOddFiltCartesian() # Assuming it returns a tuple
+        oddy_np, oddx_np = mgFilts.getOddFiltCartesian()
         fs_np = mgFilts.getFeatureSymmetry()
         print("Feature components retrieved.")
 

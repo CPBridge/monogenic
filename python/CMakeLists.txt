@@ -1,34 +1,43 @@
 cmake_minimum_required(VERSION 3.15)
 project(pymonogenic)
 
-find_package(OpenCV REQUIRED) # Find OpenCV
-find_package(pybind11 CONFIG) # Ensure pybind11 is found
+find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+find_package(OpenCV REQUIRED)
+find_package(pybind11 CONFIG REQUIRED)
 
-# Include directories
-include_directories(PRIVATE
-    ${CMAKE_SOURCE_DIR}/monogenic/include       # Include monogenic headers
-    ${CMAKE_SOURCE_DIR}/monogenic/src         # Include monogenic headers
-    ${CMAKE_SOURCE_DIR}/cvnp/include
-    ${CMAKE_SOURCE_DIR}/cvnp
-    ${OpenCV_INCLUDE_DIRS}
-    ${pybind11_INCLUDE_DIRS}                  # Include pybind11 headers
+pybind11_add_module(pymonogenic pymonogenic.cpp)
+
+set_target_properties(pymonogenic PROPERTIES
+    CXX_STANDARD 14
+    CXX_STANDARD_REQUIRED ON
+    PREFIX "${PYTHON_MODULE_PREFIX}"
+    SUFFIX "${PYTHON_MODULE_EXTENSION}"
 )
 
-# Add your wrapper source file
-pybind11_add_module(pymonogenic pymonogenic.cpp) # Adjust module name if desired
-
-target_include_directories(pymonogenic PUBLIC
+target_include_directories(pymonogenic PRIVATE
+    ${CMAKE_SOURCE_DIR}/include          # Main monogenic headers
+    ${CMAKE_SOURCE_DIR}/src              # Source directory
+    ${CMAKE_SOURCE_DIR}/cvnp/cvnp        # cvnp headers
     ${OpenCV_INCLUDE_DIRS}
-    ${cvnp_INCLUDE_DIRS}
-    ${CMAKE_SOURCE_DIR}/monogenic/src
 )
 
-target_link_libraries(pymonogenic PRIVATE pybind11::embed cvnp monogenic ${OpenCV_LIBS}) # Adjust monogenic_lib name if needed
+target_link_libraries(pymonogenic PRIVATE
+    pybind11::module                     # Use module, not embed
+    cvnp
+    monogenic
+    ${OpenCV_LIBS}
+)
 
+# Compiler-specific options
+target_compile_definitions(pymonogenic PRIVATE VERSION_INFO="${EXAMPLE_VERSION_INFO}")
+
+# Install the Python module to the site-packages directory of the Python environment
+# being used to build the library. This ensures the module is available for import
+# in the same Python environment that was used during compilation.
+#
+# Alternatively, you can set the PYTHONPATH environment variable to the build directory 
+# to make the module available for import in the same Python environment that was used during compilation.
 install(TARGETS pymonogenic
-        COMPONENT python
-        LIBRARY DESTINATION "lib/python${Python3_VERSION_MAJOR}.${Python3_VERSION_MINOR}/dist-packages"
-        ARCHIVE DESTINATION "lib"
-        RUNTIME DESTINATION "bin"
+    DESTINATION ${Python3_SITELIB}        
 )
 

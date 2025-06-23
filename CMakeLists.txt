@@ -8,9 +8,16 @@ project(monogenic CXX)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Build options
+option(BUILD_PYTHON_BINDINGS "Build Python bindings for monogenic" OFF)
+
 # Find required packages first
-find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
 find_package(OpenCV REQUIRED COMPONENTS core highgui imgcodecs imgproc)
+
+# Find Python only if building Python bindings
+if(BUILD_PYTHON_BINDINGS)
+    find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+endif()
 
 # Include directories after finding packages
 include_directories(
@@ -42,7 +49,9 @@ target_link_libraries(monogenic_image_test PUBLIC
     ${OpenCV_LIBS}    # Link to the necessary OpenCV libraries
 )
 
-# Add subdirectories
-add_subdirectory(pybind11)
-add_subdirectory(cvnp)
-add_subdirectory(python)
+# Add Python-related subdirectories only if building Python bindings
+if(BUILD_PYTHON_BINDINGS)
+    add_subdirectory(cvnp)
+    add_subdirectory(pybind11)
+    add_subdirectory(python)
+endif()

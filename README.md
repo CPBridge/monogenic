@@ -32,8 +32,8 @@ quantities from still images.
 ### Dependencies
 
 #### C++ Dependencies
-* A C++ compiler supporting the C++11 standard (requires a relatively modern version of your compiler).
-* The [OpenCV](http://opencv.org) library. Tested on version 4.2 but most fairly recent
+* A C++ compiler supporting the C++14 standard (requires a relatively modern version of your compiler).
+* The [OpenCV](http://opencv.org) library. Tested on version 4.2 and 4.5.5 but most fairly recent
 versions should be compatible. If you are using GNU/Linux, there will probably
 be a suitable packaged version in your distribution's repository.
 * (Optional) If you use a C++ compiler supporting the
@@ -44,7 +44,7 @@ parallelisation.
 #### Python Dependencies (for Python bindings)
 * Python 3.6 or higher
 * NumPy
-* OpenCV Python (`cv2`)
+* OpenCV Python (`cv2` installed via `pip install opencv-python`)
 * The project uses Pybind11 and cvnp as submodules (see building instructions below)
 
 ### Building the Project
@@ -61,18 +61,19 @@ This will download the required Pybind11 and cvnp dependencies needed for the Py
 
 #### Build with CMake
 
-To build both the C++ library and Python bindings, use CMake:
+To build the project, use CMake with the `BUILD_PYTHON_BINDINGS` option on/off to add python bindings, by default it is disabled:
 
 ```bash
 mkdir build
 cd build
-cmake ..
+cmake -DBUILD_PYTHON_BINDINGS=ON ..
 make -j$(nproc)
 ```
 
 This will build:
 - The monogenic C++ library
 - The C++ example executable (`monogenic_image_test`)
+If python bindings are enabled:
 - The Python module (`pymonogenic`)
 
 ### Instructions for Use
@@ -90,7 +91,9 @@ directory. The comments in this file should demonstrate the basic usage.
 
 #### Python Usage
 
-After building the project, the Python module `pymonogenic` will be available. You can use it like this:
+After building the project, the Python module `pymonogenic` will be available. Check that using `make install` it is successfully the library is in interpreter's site-packages folder or use the enviromental variable `PYTHONPATH` to add the path to the build folder that contains the compiled pymonogenic library.
+
+ You can use it like this:
 
 ```python
 import cv2
