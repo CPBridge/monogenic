@@ -2,10 +2,10 @@
 CPP:=g++
 
 # Include directory
-INCLUDE_DIR:=-I../include/
+INCLUDE_DIR:=-I../../include/
 
 # Source path
-VPATH:=../src/
+VPATH:=../../src/
 
 # Compiler Flags (warnings, C++11, OpenMP, optimisation)
 CPPFLAGS:=-c -Wall -Wextra -std=c++11 -fopenmp -O2 $(INCLUDE_DIR)

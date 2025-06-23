@@ -1,2 +1,4 @@
-example/monogenicTest
+build/
+.venv/
+example/cpp/monogenicTest
 *.o
